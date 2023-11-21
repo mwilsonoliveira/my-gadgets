@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { ElMessageBox } from 'element-plus'
 import { ref } from 'vue'
+import CustomButton from './components/CustomButton.vue'
 
 const openDialog = ref(false)
 
-const handleClose = (done: () => void) => {
+const handleClose = () => {
   ElMessageBox.confirm('Are you sure to close this dialog?')
     .then(() => {
-      done()
+      openDialog.value = false
     })
     .catch(() => {
       // catch error
@@ -21,7 +22,7 @@ const handleClose = (done: () => void) => {
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="openDialog = false">Cancel</el-button>
-        <el-button type="primary" @click="openDialog = false"> Confirm </el-button>
+        <el-button type="primary" @click="handleClose"> Confirm </el-button>
       </span>
     </template>
   </el-dialog>
@@ -29,7 +30,7 @@ const handleClose = (done: () => void) => {
   <el-row>
     <el-col :span="24">
       <div class="grid-content ep-bg-purple-dark">
-        <el-button @click="openDialog = true">teste</el-button>
+        <CustomButton @click="openDialog = true"> Custom Button </CustomButton>
       </div>
     </el-col>
   </el-row>
