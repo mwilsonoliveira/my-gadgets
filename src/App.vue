@@ -1,21 +1,3 @@
-<script lang="ts" setup>
-import { ElMessageBox } from 'element-plus'
-import { ref } from 'vue'
-import CustomButton from './components/CustomButton.vue'
-
-const openDialog = ref(false)
-
-const handleClose = () => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
-    .then(() => {
-      openDialog.value = false
-    })
-    .catch(() => {
-      // catch error
-    })
-}
-</script>
-
 <template>
   <el-dialog v-model="openDialog" title="Tips" width="30%" :before-close="handleClose">
     <span>This is a message</span>
@@ -35,3 +17,21 @@ const handleClose = () => {
     </el-col>
   </el-row>
 </template>
+
+<script lang="ts" setup>
+import { ElMessageBox } from 'element-plus'
+import { ref } from 'vue'
+import CustomButton from './components/CustomButton.vue'
+
+const openDialog = ref(false)
+
+const handleClose = () => {
+  ElMessageBox.confirm('Are you sure to close this dialog?')
+    .then(() => {
+      openDialog.value = false
+    })
+    .catch(() => {
+      // catch error
+    })
+}
+</script>
